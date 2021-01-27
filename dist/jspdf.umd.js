@@ -1,7 +1,7 @@
 /** @license
  *
  * jsPDF - PDF Document creation from JavaScript
- * Version 2.3.0 Built on 2021-01-15T15:15:16.555Z
+ * Version 2.3.0 Built on 2021-01-27T09:59:55.099Z
  *                      CommitID 00000000
  *
  * Copyright (c) 2010-2020 James Hall <james@parall.ax>, https://github.com/MrRio/jsPDF
@@ -183,8 +183,8 @@
       ? function saveAs() {
           /* noop */
         }
-      : // Use download attribute first if possible (#193 Lumia mobile)
-      "download" in HTMLAnchorElement.prototype
+      : // Use download attribute first if possible (#193 Lumia mobile) unless this is a native app
+      (typeof HTMLAnchorElement !== "undefined" && "download" in HTMLAnchorElement.prototype)
       ? function saveAs(blob, name, opts) {
           var URL = globalObject.URL || globalObject.webkitURL;
           var a = document.createElement("a");
@@ -32745,7 +32745,7 @@
       MORE_COMPONENTS,
       WE_HAVE_AN_X_AND_Y_SCALE,
       WE_HAVE_A_SCALE,
-      WE_HAVE_A_TWO_BY_TWO;
+      WE_HAVE_A_TWO_BY_TWO;
     ARG_1_AND_2_ARE_WORDS = 0x0001;
     WE_HAVE_A_SCALE = 0x0008;
     MORE_COMPONENTS = 0x0020;
